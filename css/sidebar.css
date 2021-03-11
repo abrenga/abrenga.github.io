@@ -1,0 +1,22 @@
+
+.mycontainer{
+    position: relative;
+    width: 1270px;
+    height: 600px;
+    z-index: -1;
+    
+   }
+
+
+   .myImage{
+       margin: 30px;
+       position: relative;
+       border-radius: 100%;
+       max-width: 200px;
+       
+   }
+
+   .myText{
+       color: blanchedalmond;
+   }
+   

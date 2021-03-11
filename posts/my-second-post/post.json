@@ -1,0 +1,115 @@
+{
+    "id": "my-second-post",
+    "image": "background-min.jpg",
+    "title": "Il miglior modo per imparare è fare",
+    "info": {
+        "date": "10 Marzo 2021",
+        "author": "Antonietta Brenga"
+    },
+    "content": [
+        {
+            "type": "text",
+            "content": "Bene, eccoci qui!<br> Inizio quest'articolo riconfermando quanto già detto: le difficoltà che riscontro sono nella costruzione di un ragionamento logico. Per riuscire ad abbattere questo muro gigantesco non mi resta che esercitarmi, esercitarmi, esercitarmi...<br> Ho deciso, quindi, di cimentarmi nella realizzazione del gioco <strong>\"tic-tac-toe\"</strong> anche detto più comunemente \"tris\".<br>Chi non ha mai giocato a questo gioco?<br>Ricordo che in classe era uno dei giochi più in voga da fare con il compagno di banco insieme all'impiccato e a \"Nomi, Cose e Città\".<br>Ma come passare da \"traccio quattro linee e iniziamo!\" a \"ok! sviluppo tutto il ragionamento che rende possibile il gioco\"? <br>I punti che ho seguito sono:<br><ol><li>come è fatto? Cosa deve avere per funzionare?</li><li>descrivi il progetto, anche su un foglio se necessario: questo ti sarà utile per mantenere il focus su quello che devi fare. Analizza poi ogni elemento singolarmente.</li><li> focalizzati sullo scrivere tutta la logica in Javascript, senza pensare <strong>all'HTML o al CSS</strong>, in modo da evitare distrazioni.</li><ol>",
+            "class": "my-class"
+        },
+        {
+            "type": "heading",
+            "content": "Tic-Tac-Toe",
+            "class": "my-h2"
+        },
+        {
+            "type": "image",
+            "content": "tic-tac-toe-150614_1280.png",
+            "class": "my-imageClassInText"
+        },
+        {
+            "type": "heading",
+            "content": "Caratteristiche del gioco",
+            "class": "my-h5"
+        },
+        {
+            "type": "text",
+            "content": "<ul><li>il gioco è formato da una griglia con 3 celle in orizzontale e 3 in verticale.</li><li>ci sono 2 giocatori: giocatore uno, più comunemente identificato con il simbolo <strong>\"X\"</strong> e giocatore due, identificato invece con il simbolo <strong>\"O\"</strong></li><li>per comodità, stabilisco che sarà il giocatore uno ad iniziare</li><li>vince chi tra i due giocatori disegna una successione di 3 simboli uguali in orizzontale, in verticale o in obliquo.<br><strong>N.B:</strong> ogni giocatore ha la possibiltà di cliccare su una casella alla volta e solo se questa è libera</li></ul>"
+        },
+        {
+            "type": "heading",
+            "content": "Da cosa iniziare",
+            "class": "my-h5"
+        },
+        {
+            "type": "text",
+            "content": "La griglia è formata da singole celle. Dichiariamo, quindi, una funzione che si occupa di <strong>\"crearle\"</strong>, passando come parametri delle coordinate che serviranno ad identificare poi l'esatta posizione della cella all'interno della griglia.<br> Ho pensato di usare come rappresentazione della cella un oggetto chiamato <strong>\"box\"</strong>:",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "esempio1.js",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Dichiariamo poi un'altra funzione che si occuperà di raggruppare le celle per formare una griglia, inserendo come parametri le grandezze dei due lati (parametri necessari per stabilire quante celle andranno a comporre la griglia stessa). <strong>N.B:</strong> una griglia non è altro che un insieme di celle, è bene dunque posizionare ogni singola cella all'interno di un array assegnando a questa una posizione o coordinata <strong>(x,y)</strong>.<br>Per posizionare le celle correttamente bisognerà tener conto di queste due grandezze, utilizzo quindi un doppio <strong>\"for\"</strong>.<br>Il primo che andrà da <strong>\"X = 0\"</strong> per tutta la lunghezza orizzontale e un altro, all'interno del primo, che passerà per tutta la lunghezza verticale.",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "esempio2.js",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Avremo bisogno di selezionare la singola cella interessata.<br> Per ogni elemento dell'array ci accertiamo che le coordinate siano quelle che stiamo cercando e ritorniamo la cella stessa.<br>Su di questa, poi, andrà invocata la funzione che si occupa di inserire la <strong>\"X\"</strong> o la <strong>\"O\"</strong> a seconda del turno in cui ci troviamo.",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "esempio3.js",
+            "class": "my-code"
+        },
+        {
+            "type": "heading",
+            "content": "Inserisci la \"X\", inserisci la \"O\"",
+            "class": "my-h5"
+        },
+        {
+            "type": "text",
+            "content": "Come possiamo fare in modo che cliccando su una cella compaia la <strong>\"X\"</strong> o la <strong>\"O\"</strong>?<br>Teniamo presente che se i giocatori sono due, come in questo caso, possiamo tranquillamente usare un booleano per identificare il turno. Fissiamo una variabile all'esterno della funzione <strong>\"let toccaAllaX = true\"</strong>.<br>Ogni volta che andremo ad inserire un simbolo all'interno della cella la variabile passerà a <strong>\"false\"</strong>, poi di nuovo a <strong>\"true\"</strong> e cosi via.",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "esempio4.js",
+            "class": "my-code"
+        },
+        {
+            "type": "heading",
+            "content": "Non ci resta che scegliere il vincitore",
+            "class": "my-h5"
+        },
+        {
+            "type": "text",
+            "content": "Una volta agganciato l'evento click sulla cella interessata, non ci resta che scegliere il vincitore.<br>Sappiamo che vince chi è riuscito a formare una fila di 3 simboli uguali in verticale, in orizzontale o in diagonale.<br> Le funzioni sono molto simili tra loro: dovremo, infatti, considerare ancora l'asse delle <strong>\"X\"</strong> e l'asse delle <strong>\"Y\"</strong>.<br>&nbsp;&nbsp;^<br>2 |<br>1 |<br>0 |<br>&nbsp;&nbsp;&nbsp;  _ _ _ _ _ > X<br>&nbsp;&nbsp;&nbsp;0 1 2 <br> Come per la creazione della singola cella, anche qui è necessario un doppio <strong>\"for\"</strong> per riuscire a scorrere entrambe le grandezze. Ovviamente la scelta di scorrere prima la <strong>\"X\"</strong> o la <strong>\"Y\"</strong> dipende da quale funzione stiamo prendendo in considerazione: per determinare il vincitore in orizzontale bisognerà scorrere per ogni <strong>\"Y\"</strong> tutte le <strong>\"X\"</strong> e al contrario, per il vincitore in verticale.<br> Discorso leggermente diverso per la condizione di vittoria in obliquo, dove la crescita di <strong>\"X\"</strong> e di <strong>\"Y\"</strong> deve essere uguale: ad ogni incremento di <strong>\"X\"</strong> cresce in egual misura <strong>\"Y\"</strong><br>Ecco l'esempio:",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "esempio5.js",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Teniamo presente che le condizioni di vittoria in obliquo sono due.<br> La prima dove <strong>\"X\"</strong> e <strong>\"Y\"</strong> aumentano e l'altra dove <strong>\"Y\"</strong> decresce e <strong>\"X\"</strong> aumenta:",
+            "class": "my-class"
+        },
+        {
+            "type": "image",
+            "content": "nuvo.jpeg",
+            "class": "my-imageClassInText"
+        },
+        {
+            "type": "text",
+            "content": "Bisognerà quindi realizzare un'altra funzione che verificherà la condizione di vittoria obliqua opposta, ma lascio la sua scrittura come esercizio per il lettore.<br> Bene, spero che questo articolo vi sia piaciuto e che vi sia stato utile. Ci aggiorniamo per altri articoli!<br>P.S: per chi volesse leggere tutto il codice, ecco il link: <a href=\"\"></a>",
+            "class": "my-class"
+        }
+    ]
+}

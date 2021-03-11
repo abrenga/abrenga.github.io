@@ -1,0 +1,97 @@
+body {
+    background-color: rgb(223, 219, 219);
+    height: 720px;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    
+    }
+
+
+    .myh3{
+        margin: 5rem;
+    }
+
+
+   .mycol{
+       text-align: center;
+       margin-bottom: 1.5rem;
+       margin-top: 130px;
+   }
+
+   
+  .point:hover{
+      fill: rgb(185, 180, 180);
+  }
+
+   
+
+
+   .displayno{
+    display: none;
+   }
+
+
+
+    .w-container-footer {
+        text-align: center;
+        
+    }
+
+    .back_to_top{
+        justify-content:right;
+    }
+
+
+    .myBackground{
+        background-image: url("../image/cover.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+
+
+    @media  (max-width:991px){
+       
+        .nav-item{
+            background-color: rgba(17, 16, 16, 0.151);
+            color: black;
+            text-align: center;
+            border-bottom: 1 solid white;
+        
+          }
+
+          .myTopBar{
+            background-color: black!important;
+        
+          }
+
+          #contact{
+              display: inline;
+          }
+
+          .navbar-collapse{
+            background-color: rgba(24, 24, 24, 0.795);
+            margin-top: 12px;
+            
+          }
+    }
+
+.myrow{
+
+    
+    background-color: #dbd2d2;
+    margin: 2%;
+}
+
+
+.bi-envelope:hover{
+fill: rgb(43, 43, 180);
+}
+    
+
+.bi-instagram:hover{
+    fill: rgb(179, 74, 165);
+}

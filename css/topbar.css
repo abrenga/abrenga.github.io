@@ -1,0 +1,25 @@
+
+
+.myTopBar{
+   border-bottom: 2px solid #e6e6e665;
+   height: 3.2em;
+  background-color: rgba(10, 10, 10, 0.144);
+   color:rgb(255, 255, 255);
+   font-size: 1.2em;
+  position: sticky;
+  z-index: 2;
+
+}
+
+
+.logo{
+border-radius: 100%;
+width: 50px;
+}
+
+
+@media (max-width: 991px){ 
+.navbar-collapse {
+    margin-top: -8px!important;
+}
+}

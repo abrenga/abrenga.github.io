@@ -1,0 +1,36 @@
+{
+    "id": "my-first-post",
+    "image": "my-image.jpg",
+    "title": "Come ho creato questo blog",
+    "info": {
+        "date": "27 Febbraio 2021",
+        "author": "Antonietta Brenga"
+    },
+    "content": [
+        {
+            "type": "text",
+            "content": "Penso sia doveroso battezzare questo blog con un primissimo articolo che racconta come ho iniziato e cosa ho dovuto apprendere per realizzarlo.<br>Come ho sempre detto, lo scopo principale è quello di imparare, condividere con tutti le nozioni apprese e, perchè no, migliorarmi.<br>Pronti?",
+            "class": "my-class"
+        },
+        {
+            "type": "heading",
+            "content": "Da dove ho iniziato?",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Prima di tutto, voglio precisare che ho seguito delle lezioni su Udemy che, per chi non lo conoscesse, è un sito dove chiunque abbia il desiderio di imparare (qualsiasi cosa) può farlo o fare dei corsi per insegnare agli altri...<br> Io personalmente ho seguito le lezioni di Simona Tocci per le basi di HTML, CSS e jQuery e quelle di Gianluca Scocozza per le basi di Javascript.<br> Ho seguito ovviamente anche altri corsi, ma decisamente questi due mi hanno aiutato tantissimo e nel mio piccolo mi sento di consigliarli soprattutto a chi, come me, parte da un livello più basso del livello zero... :)<br><br>Ovviamente i corsi non bastano: c'è bisogno di tanto approfondimento, di leggere i manuali ufficiali e tanto, tantissimo, esercizio. Non solo: anche allenare il pensiero logico necessario per organizzare tutto il lavoro è fondamentale (cosa in cui ho trovato abbastanza difficoltà).",
+            "class": "my-class"
+        },
+        {
+            "type": "heading",
+            "content": "Il mio progetto",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Per questo progetto in particolare ho usato HTML, CSS con l'uso di Bootsrap e ovviamente Javascript.<br> Come si  può notare ho preferito mantenere delle linee semplici nel posizionamento degli elementi, una barra e un jumbotron minimali.<br>Le immagini sono invece prese da <a href=\"www.pexels.com\">www.pexels.com</a>, dove sono distribuite con licenza free.<br>Qual è l'importanza di usare un'immagine libera da copyright?<br>Chi condivide le proprie foto e immagini online spesso non lo fa per bontà d'animo, ma lo fa perché quello è il suo lavoro.<br> Quando noi ci \"impossessiamo\" illegalmente di una foto senza pagare per la sua licenza possiamo essere soggetti al pagamento di un risarcimento.<br>Tenete presente, però, che per poter esigere un risarcimento, la richiesta deve prima essere inviata tramite UN PRIMO AVVERTIMENTO, che ci avvisa di rimuovere la foto o pagarne la licenza. Se questo viene ignorato, l'autore potrebbe decidere di procedere per altre vie (legali!) per ottenere ciò che gli spetta.<br> Controllate, comunque, sempre la veridicità e la fonte di queste richieste: potrebbero essere una truffa o, come si dice, \"ce stanno a provà\"! Se siete indecisi, consultate un avvocato che è meglio!<br> Tornando al blog, di certo la parte più complessa per me è stata rendere dinamica la pagina.<br>In un file Javascript ho creato un oggetto che ho chiamato blog, al suo interno ho scritto tutto il codice necessario.<br> Ho imparato inoltre che è fondamentale un codice pulito e funzioni con un nome pratico che rispecchiano esattamente quello che è lo scopo delle funzioni stesse per poter aiutarsi a ragionare meglio.<br> Per i post ho creato delle cartelle singole e al loro interno ho creato dei file JSON che ho poi recuperato con delle chiamate fetch.<br>I post sono poi stati generati dinamicamente con Javascript.<br>Il codice è visionabile su GitHub.<br>Prossimamente mi piacerebbe approcciare più dinamicamente lo sviluppo web, magari imparando React!<br><br> A presto per nuovi aggiornamenti!",
+            "class": "my-class"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+.myBackgroundPosts{
+  background-image: url("../image/new-min.jpg");
+  background-size: cover;
+  background-position: bottom;
+  height: 500px;
+}
+
+.myBlogPosts{
+    background-color: rgb(248, 244, 247);
+    margin-top: 2em;
+    text-align: center;
+
+}
+
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (   min--moz-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (     -o-min-device-pixel-ratio: 2/1)    and (min-width: 320px),
+only screen and (        min-device-pixel-ratio: 2)      and (min-width: 320px),
+only screen and (                min-resolution: 192dpi) and (min-width: 320px),
+only screen and (                min-resolution: 2dppx)  and (min-width: 320px) { 
+
+  /* Small screen, retina, stuff to override above media query */
+  .myPostsColor{ 
+    display: table-row-group;
+    height: 720px;
+    
+  }
+
+  .nav-item{
+    background-color: rgba(17, 16, 16, 0.151);
+    color: black;
+    text-align: center;
+    border-bottom: 1 solid white;
+
+  }
+
+  .myTopBar{
+    background-color:rgba(17, 16, 16, 0.932)!important;
+
+  }
+
+
+}
+
+
+.my-style-image{
+margin-top: 20px;
+width: 500px;
+height: auto;
+text-align: center;
+
+
+}
+
+.container{
+  margin-top: 20px;
+}
+
+
+
+.styleJumboSinglePost{
+  width: 690px;
+  height: 590px;
+}
+
+
+.myspan{
+padding: 2px;
+  font-size: 13px;
+}
+
+.myCard{
+  margin-top: 20px;
+  max-height: 100px;
+  overflow-y: hidden;
+}
+
+
+.myCardTitle{
+  
+  margin-bottom: -0.2rem;
+
+}
+
+
+.gradient{
+  background: linear-gradient(90deg, rgba(223,219,219,1) 0%, rgba(223,219,219,1) 29%, rgba(0,0,0,0) 100%);
+}
+
+.my-imageClassInText{
+  height: 200px;
+  width: 200px;
+  margin: 80px;
+ 
+}
+
