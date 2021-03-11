@@ -14,7 +14,7 @@ var blog = {
 
         let image = document.createElement("img");
         image.setAttribute("src", post.image);
-        image.setAttribute('class', 'btn ');
+        image.setAttribute('class', 'btn card-img-top');
         cardDom.appendChild(image);
 
 
