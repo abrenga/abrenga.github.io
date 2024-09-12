@@ -1,0 +1,75 @@
+{
+    "id": "my-third-post",
+    "image": "foto.jpg",
+    "title": "Uno sguardo sulle richieste Http",
+    "info": {
+        "date": "16 Marzo 2021",
+        "author": "Antonietta Brenga"
+    },
+    "content": [
+        {
+            "type": "text",
+            "content": "Sappiamo che internet non è altro che scambio di dati tra \"utenti\" presenti sulla rete, lo scambio di informazioni avviene tramile il browser che interagisce con il server, quando però, c'è esigenza di un'interazione dinamica, o di una comunicazione diretta tra il client e il server, ecco che la comunicazione può avvenire tramite il protocollo HTTP <strong>(HyperText Transfer Protocol)</strong>.<br> Le principali richieste che si possono effettuare sono:<br> <strong>\"GET\"</strong>, <strong>\"POST\"</strong> e <strong>\"HEAD\"</strong>.<br> Come possiamo procedere dunque?<br>Bisognerà fare richiesta al server tramite javascript e attendere che la richiesta venga elaborata, il tempo di elaborazione della \"risposta\" è variabile, è importante quindi, procedere con una richiesa <strong>asicrona</strong>, ovvero non bloccante, così da permettere al codice di continuare nella sua esecuzione. Al termine la \"richiesta\"  verrà elborata e le informazioni caricate.<br> Passiamo ora ad illustrare i diversi modi per effettuare questo tipo di richieste con javascript."
+        },
+        {
+            "type": "heading",
+            "content": "metodo XMLHttpRequest()",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Uno dei metodi  \"classici\" per inviare una richiesta HTTP è tramite l'oggetto XMLHttpRequest().<br>Viene creata un'istanza dell'oggetto XMLHttpRequest, associeremo quindi, la proprietà open() alla quale passeremo come parametri il tipo di richiesta: \"GET\" (in questo caso), l'url, e per assicurarci di procedere in modo asincrono il booleano true.<br>Invieremo la richiesta con la proprietà send(), elaborarata la risposta dovremo procedere con la messa a video dei dati. Di seguito l'esempio:  "
+        },
+        {
+            "type": "code",
+            "content": "esempio1.js",
+            "class": "my-code"
+        },
+        {
+            "type": "heading",
+            "content": "metodo jQUery.ajax()",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Un modo di certo più diretto e personalizabile per richieste ajax è di certo il metodo jQuery.ajax o $.ajax().<br> Questo metodo restituisce l'oggetto <strong>jqXHR</strong> all'interno qel quale troviamo tutte le caratteristiche dell'oggetto XMLHttpRequest.<br>La sintatti è:"
+        },
+        {
+            "type": "code",
+            "content": "esempiojquery.js",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Come si evince dall'esempio sopra riportato $.ajaz() consente una coppia di <strong>chiave/ valore</strong> che ci permette di attribuire diversi parametri alla richiesta.<br> Il parametro method chiede il tipo di richiesta, che potrà essere \"Get\", \"Post\", \"Put\", dove il valore di defoult è sempre \"Get\".<br>Come si può intuire il parametro url conterrà la risorsa e il parametro success e error conterranno invece la funzione che indicherà cosa succede in caso si verifichi una condizione piuttosto che un'altra. "
+        },
+        {
+            "type": "heading",
+            "content": "Metodo API fetch()",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Un altro metodo che ci permette di realizzare un codice linerare e pulito,evitando quello che nel gergo comune veniva identificato come \"calback hell \"è il metodo fetch().<br>fetch() restituisce una promise che andrà poi risolta con la proprietà then(). Di seguito l'esempio:  "
+        },
+        {
+            "type": "code",
+            "content": "esercizio2.js",
+            "class": "my-code"
+        },
+
+        {
+            "type": "text",
+            "content": "Si inserisce il percorso della risorsa, la richiesta restituisce una chiamata HTTP che non contiene però l'effettivo contenuto del file Json, bisognerà quindi ricorrere al json() metodo.<br>Bene, arrivati a questo punto, per snellire ulteriormente il codice ed evitare una carrellata interminabile di then() è stata introdotta la formula \"async\", \"await\", il codice ci dirà quindi di procedere con una richiesta sincrona, e di attendere la risposta.<br> <strong>Qual'è la differenza di utilizzo tra jQUery.ajax() e l'API fetch()</strong>? "
+        },
+    
+            
+            
+
+        {
+            "type": "text",
+            "content": "Le differenze sono principalemnte due: <li>Il metodo API fetch(), anche se cè un problema della richiesta HTTP restituisce una promise che viene comunqe risolta con lo stato \"ok\" settato su false, e restituirebbe errore solo ad un problema lato server,</li> <li> il metodo fetch() rifiuta in automatico l'invio di cookie cross-origin,permettendo cosi un utilizzo più sicuro.</li> <br>  "
+        }
+
+    ]
+}

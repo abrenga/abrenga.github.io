@@ -1,0 +1,61 @@
+{
+    "id": "my-four-post",
+    "image": "my-image.jpg",
+    "title": "Conteggio degli 0 su un fattoriale",
+    "info": {
+        "date": "12 settembre 2024",
+        "author": "Antonietta Brenga"
+    },
+    "content": [
+        {
+            "type": "text",
+            "content": "Durante i miei ormai quotidiani esercizietti per allenare la logica su <a href='https://www.codewars.com'>codewars</a> (che vi invito a fare perchè vi tengono ben allenati), mi sono imbattuta in questo 'Kata':",
+            "class": "my-class"
+        },
+        {
+            "type": "text",
+            "content": "<code>Write a program that will calculate the number of trailing zeros in a factorial of a given number.<br><br> N! = 1 * 2 * 3 *  ... * N.</code>",
+            "class": "my-class"
+        },
+        {
+            "type": "heading",
+            "content": "Che cos'è quindi un numero fattoriale?",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Per poter svolgere l'esercizio, quindi, bisogna sapere che cosa si intende per numero fattoriale. Tenendo ben a mente che chi vi scrive non è un matematico, proverò a spiegarlo, comunque, al meglio delle mie capacità.<br>In matematica, il numero fattoriale - N! - non è altro che il prodotto della moltiplicazione di tutti i numeri positivi precedenti al numero stesso (compreso).",
+            "class": "my-class"
+        },
+        {
+            "type": "text",
+            "content": "Compreso ciò, di modi per risolverlo me ne sono venuti in mente un paio, ma tutti comprendevano l'espansione del fattoriale.<br>Per esempio, una delle possibili soluzioni era questa:",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "Solution.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Tuttavia, per quanto il ragionamento sembra filare, l'esercizio secondo il sito non era corretto.<br>Andando ad analizzare meglio la traccia, leggendo tra i commenti di chi l'esercizio l'aveva già svolto, mi sono accorta che in fondo era segnato un suggerimento: \"non dovresti calcolare il fattoriale, trova un altro modo per calcolare il numero di zeri\".<br>Una volta letto, mi si è aperto un mondo: ho speso mezza giornata per capire come potevo risolverlo senza calcolare il numero fattoriale. Mi sono detta: sicuramente in matematica è un problema noto! Armata di questa nuova consapevolezza, ho cominciato a cercare e mi sono imbattuta in questo:<br> <code>L'espressione logaritmica chiamata identità di Legendre-De Polignac</code>",
+            "class": "my-class"
+        },
+        {
+            "type": "text",
+            "content": "Praticamente, per capire di quanti 0 finali è composto il tuo N! basta tenere a mente che il fattoriale ha tanti zeri finali quante le volte che e' divisibile per 10.<br>Ogni numero multiplo di 5 e non superiore al numero in questione apporta una fattore 5 al prodotto.<br>Dunque, se è vero ciò, considerando il numero che ci viene passato, basta partire da 5 fino a che il numero in questione, che viene diviso per 5, risulta maggiore o uguale a 1. Si moltiplica poi per 5 e cosi via, fino a che non avremo un numero minore di 1: in quel caso si uscirà dal loop. L'esercizio risulta così:",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "soluzione2.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Condivido con voi l'esercizio, perchè l'ho trovato estremamente stimolante. Spero vi sia stato utile.",
+            "class": "my-class"
+        }
+    ]
+}

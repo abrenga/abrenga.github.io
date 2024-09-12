@@ -108,7 +108,7 @@
         },
         {
             "type": "text",
-            "content": "Bisognerà quindi realizzare un'altra funzione che verificherà la condizione di vittoria obliqua opposta, ma lascio la sua scrittura come esercizio per il lettore.<br> Bene, spero che questo articolo vi sia piaciuto e che vi sia stato utile. Ci aggiorniamo per altri articoli!<br>P.S: per chi volesse leggere tutto il codice, ecco il link: <a href=\"\"></a>",
+            "content": "Bisognerà quindi realizzare un'altra funzione che verificherà la condizione di vittoria obliqua opposta, ma lascio la sua scrittura come esercizio per il lettore.<br> Bene, spero che questo articolo vi sia piaciuto e che vi sia stato utile. Ci aggiorniamo per altri articoli!<br>P.S: per chi volesse leggere tutto il codice, ecco il link: <a href=\"http://127.0.0.1:5500/index.html\">link</a>",
             "class": "my-class"
         }
     ]
