@@ -1,0 +1,125 @@
+{
+    "id": "my-third-post",
+    "image": "foto.jpg",
+    "title": "Gli Stream in Java",
+    "info": {
+        "date": "06 Gennaio 2025",
+        "author": "Antonietta Brenga"
+    },
+    "content": [
+        {
+            "type": "text",
+            "content": "Qual è il miglior modo di iniziare l'anno se non quello di introdurvi nel mondo degli Stream in Java?<br>Dunque: cosa è uno Stream?<br>Tra le varie definizioni trovate online si evince: \"uno *Stream* è un flusso di dati introdotto con Java 8 che può essere elaborato in modo funzionale, fornendo una rappresentazione astratta per l'elaborazione di una sequenza di dati, come ad esempio collezioni, array o altre sorgenti. Lo Stream non è una struttura dati in sé, ma una vista sulla sequenza di dati sorgente. Permette di applicare operazioni dichiarative per trasformare, filtrare, ordinare e raccogliere i dati\""
+        },
+        {
+            "type": "heading",
+            "content": "Ma cosa vuol dire?",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Molto spesso quando si lavora con i dati abbiamo bisogno di iterarli, per farlo utilizziamo strumenti come il ciclo for, il foreach, ecc. Non solo: dobbiamo anche conoscere la struttura dati sottostante al fine di capire come l'iterazione deve essere fatta.<br> Lo Stream bypassa tale limite e astrae il concetto aprendo un \"flusso\" di dati iterabili sui quali possiamo eseguire le più comuni operazioni: mappare, filtrare, manipolare i dati, ecc. Inoltre, lo Stream permette di astrarre dal concetto di sorgente dei dati, che in questo modo possono arrivare da qualsiasi posto: memoria, disco, rete, ecc.<br>In alcuni casi, può anche aiutarci ad ottimizzare, riutilizzando la stessa porzione di memoria.<br>Se dovessimo infatti gestire la lettura di un file con una dimensione di X Giga, potrebbe risultare assai dispendiosa la lettura di tutto il file, perchè questo vorrebbe dire allocare tanta memoria.<br>Con lo Stream e in particolare con il BufferInputStream, noi possiamo allocare lo spazio in memoria solo per un determinato quantitativo di memoria, leggere fino a li, ed estrapolare solo i dati che ci servono, scartando il resto, a quel punto potremmo riutilizzare la stessa memoria e continuare a scorrere il file."
+        },
+        {
+            "type": "code",
+            "content": "esempioconInputStreamOb.js",
+            "class": "my-code"
+        },
+        {
+            "type": "heading",
+            "content": "Volendo fare un esempio:",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "E' come quando, in un ristorante cinese, vedete passare sul nastro tutti i cibi in sequenza, prendete solo quelli che vi piacciono e tralasciate gli altri.<br>In questo caso, infatti, voi afferrate i piatti presenti sul nastro a vostro piacimento, senza modificare la struttura del funzionamento del nastro che ha il solo scopo di far fluire i cibi.<br>Gli Stream fanno esattamente questo: aprono un flusso di dati e ve ne permetteno la manipolazione."
+        },
+        {
+            "type": "text",
+            "content": "Gli Stream in Java sono gestiti dalla libreria(package) java.io che fornisce delle potenti API per gestire la lettura e scrittura dei dati tramite questa astrazione.<br>In particolare, le classi degli Stream seguono una gerarchia che li divide in due categorie: Input e Output.<br>In cima alla gerarchia vi sono dunque due classi astratte, dal nome estremamente esplicativo:<br>- InputStream fornisce l'astrazione necessaria per la *lettura* dei dati da una sorgente<br> - OutputStream fornisce l'astrazione necessaria per la <strong>scrittura</strong> dei dati in una sorgente"
+        },
+        {
+            "type": "text",
+            "content": "Ovviamente, quando si parla di una sequenza di byte, che può essere salvata su file o trasmessa, si fa riferimento al processo di conversione degli oggetti Java, ovvero rispettivamente serializzazione e deserializzazione. In questo contesto, per operazioni su file binari, si utilizzano FileInputStream e FileOutputStream, mentre per la gestione di oggetti Java, si ricorre rispettivamente alle classi ObjectInputStream e ObjectOutputStream. "
+        },
+        {
+            "type": "heading",
+            "content": "Il mio progetto",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Dopo una panoramica generale su cos'è uno Stream, passo a mostrarvi come ho approfondito l'argomento.<br>"
+        },
+        {
+            "type": "text",
+            "content": "Ho implementato un sistema per la generazione di fatture. Il sistema legge da un file JSON i dati delle varie fatture in input e le esporta in pagine HTML derivate da un template HTML prestabilito.<br>"
+        },
+        {
+            "type": "heading",
+            "content": "I modelli",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Ho implementato una prima classe Invoice che rappresenta il modello della fattura, formata dal suo ID, dal mese e dall'importo della stessa.<br>"
+        },
+        {
+            "type": "text",
+            "content": "Una seconda classe implementa la lista di Invoice. Quest'ultima mi serve come modello per deserializzare dal mio file JSON.<br>"
+        },
+        {
+            "type": "heading",
+            "content": "La logica",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Ho poi implementato due classi ReadJson e GenerateHTML per modellare la logica principale: lettura dell'input e generazione dell'output.<br>"
+        },
+        {
+            "type": "text",
+            "content": "Nella classe ReadJson ho implementato un metodo read() che accetta come paramento il percorso del file JSON dal quale leggere.<br>Istanzio la classe File passandone il percorso.<br>Ora, lo scopo è quello di leggere all'interno di un file Json, in particolare ho bisogno di mappare, i dati che ho all'interno del file, in particolare file(percorso dove trovo il file) all'interno del mio prototipo Invoices.<br>Per poter lavorare con i dati presenti all'interno di un JSON ho usato una classe specifica: ObjectMapper.<br>E' una classe che appartiene alla libreria Jackson e ci consente di mappare un oggetto Java verso il formato JSON molto facilmente.<br>Istanzio e configuro l'ObjectMapper e ne invoco il metodo readValue() passandogli come parametro l'istanza di File creata prima e i metadati della mia classe Invoices (così che abbia le informazioni sul tipo da mappare).<br>Il metodo read() terminerà restituendo il mio oggetto Invoices che ora conterrà i dati letti.<br>"
+        },
+        {
+            "type": "heading",
+            "content": "Una piccola precisazione:",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Vorrei inoltre, fare una breve riflessione sull'uso del blocco try/catch in questa porzione di codice.<br> Ho implementato una gestione delle eccezioni che prevede la cattura di un errore nel caso in cui il file da leggere non esiste.<br> Tuttavia, qualora il file esistesse ma vuoto, l'eccezione viene intercettata senza interrompere l'esecuzione, restituendo semplicemente un oggetto Invoices vuoto.<br>In questo modo, il flusso del programma prosegue senza bisogno di interrompersi.<br>Ecco in dettaglio il codice:<br>"
+        },
+        {
+            "type": "code",
+            "content": "esempio1.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Una volta ottenuti i dati presenti all'interno del mio file JSON, devo semplicemente procedere con la generazione delle pagine HTML usando come prototipo un template che andrò a scrivere.<br>Il template mi permette di strutturare la mia pagina HTML, ma dovrà anche consentirmi di riempire alcune sue sezioni con dei valori dinamici. Per ottenere questo comportamento, al suo interno ho furbamente lasciato dei riferimenti (@Date e @Total) che andranno poi sostituiti con i parametri presenti nelle varie istanze di Invoice.<br>Nella classe GenerateHTML implemento un metodo htmlGenerate() che accetta come parametri il percorso del file di output, il percorso del file usato come template e un'istanza della mia classe Invoices.<br>Inizio con il leggere il contenuto del mio template. Per farlo, apro un nuovo Stream utilizzando la classe FileInputStream e leggo tutto il contenuto del file inserendolo in una stringa.<br>"
+        },
+        {
+            "type": "heading",
+            "content": "Ma come mai si converte in stringa?",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "La conversione in stringa non è fatta a caso: mi serve per sostituire ai riferimenti lasciati prima (@Date e @Total) i dati precisi dell'Invoice corrente. Per farlo, ho usato il semplice metodo replace() (poor-woman style).<br> Una volta sostituita alla stringa i dati di riferimento, andrò a scriverla all'interno del mio file HTML di output.<br>Prima di farlo, però, bisognerà considerare il caso in cui il percorso che conterrà l'output ancora non esista: va quindi creato e solo dopo si procederà alla scrittura.<br>Ho utilizzato i metodi getParentFile() per recuperare il percorso della cartella di output e mkdirs() per crearlo.<br>"
+        },
+        {
+            "type": "text",
+            "content": "Per la scrittura del file ho utilizzato una classe della libreria java.io: FileWriter. Lo si può instanziare passandogli il percorso del file di output. Questo creerà un nuovo file in cui posso ora scrivere la mia stringa contenente il template riempito con i dati.<br>Lo faccio utilizzando il metodo write() di FileWriter.<br>N.B:<br> ogni volta che apriamo un flusso sia per la lettura che per la scrittura, abbiamo necessariamente bisogno di chiuderlo una volta che avremo terminato di utilizzarlo. Ricordiamoci, quindi, di chiamare il metodo close()!<br>"
+        },
+        {
+            "type": "text",
+            "content": "Nell'implementazione del metodo htmlGenerate ho tralasciato un particolare: abbiamo bisogno di generare tante pagine HTML quanti sono gli elementi contenuti nel nostro file JSON.<br>Avrò necessariamento bisogno di un ID, che mi permetta di rendere univoca la fattura e - di conseguenza - anche il rispettivo file di output.<br>Tra i dati di una Invoice c'è anche un ID, che userò al momento della generazione del percorso di output per ogni fattura, accodandolo al nome del file.<br>Ecco l'implementazione:<br>"
+        },
+        {
+            "type": "code",
+            "content": "esempio2.java",
+            "class": "my-code"
+        }
+    ]
+}
