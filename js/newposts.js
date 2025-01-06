@@ -10,10 +10,16 @@ var blog = {
         cardDom.setAttribute("class", "card Card-style");
         cardWrapper.appendChild(cardDom);
 
-
+        let imageSrc = "";
+        if (typeof post.image === "object") {
+            imageSrc = post.image.src;
+        } else {
+            imageSrc = post.image;
+        }
+        imageSrc = "posts/" + post.id + "/" + imageSrc;
 
         let image = document.createElement("img");
-        image.setAttribute("src", post.image);
+        image.setAttribute("src", imageSrc);
         image.setAttribute('class', 'btn card-img-top');
         cardDom.appendChild(image);
 
@@ -100,9 +106,28 @@ var blog = {
 
     createAdvancedSinglePost: function (post) {
 
-        let mainImage = document.createElement("img");
-        mainImage.setAttribute("src", post.image);
-        mainImage.setAttribute("height", "500px")
+        let imageSrc = "";
+        let imageBackground = "transparent";
+
+        if (typeof post.image === "object") {
+            imageSrc = post.image.src;
+            imageBackground = post.image.containerBackgroundColor;
+        } else {
+            imageSrc = post.image;
+        }
+
+        imageSrc = "posts/" + post.id + "/" + imageSrc;
+
+        let mainImage = document.createElement("div");
+        mainImage.setAttribute("class", "single-post-image");
+        mainImage.setAttribute("style", "background-color: " + imageBackground);
+
+        let innerImage = document.createElement("img");
+        innerImage.setAttribute("src", imageSrc);
+        innerImage.setAttribute("style", "");
+
+        //mainImage.appendChild(innerImage);
+        //mainImage.setAttribute("height", "500px")
 
 
         let postContainer = document.createElement("div");
@@ -134,7 +159,7 @@ var blog = {
         this.renderPostContent(contentContainer, post);
 
 
-        this.containerCard.appendChild(mainImage);
+        //this.containerCard.appendChild(mainImage);
         this.containerCard.appendChild(postContainer);
 
 
@@ -238,7 +263,6 @@ var blog = {
     getPost: async function (slug) {
         let response = await fetch('posts/' + slug + '/post.json');
         let post = await response.json();
-        post.image = "posts/" + slug + "/" + post.image;
 
         return post;
     },
@@ -267,7 +291,7 @@ var blog = {
         const postsIndex = await this.getPostsIndex();
         postsIndex.reverse();
 
-        const selectedSlugs = postsIndex.slice(-4);
+        const selectedSlugs = postsIndex;//.slice(-4);
         const posts = await this.getLatestPosts(selectedSlugs);
 
         posts.forEach((post) => this.createCard(post));

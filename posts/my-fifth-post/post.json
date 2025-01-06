@@ -1,6 +1,9 @@
 {
     "id": "my-fifth-post",
-    "image": "foto.png",
+    "image": {
+        "src": "foto.png",
+        "containerBackgroundColor": "#cdc8bc"
+    },
     "title": "Gli Stream in Java",
     "info": {
         "date": "06 Gennaio 2025",
@@ -19,11 +22,6 @@
         {
             "type": "text",
             "content": "Molto spesso quando si lavora con i dati abbiamo bisogno di iterarli, per farlo utilizziamo strumenti come il ciclo for, il foreach, ecc. Non solo: dobbiamo anche conoscere la struttura dati sottostante al fine di capire come l'iterazione deve essere fatta.<br> Lo Stream bypassa tale limite e astrae il concetto aprendo un \"flusso\" di dati iterabili sui quali possiamo eseguire le più comuni operazioni: mappare, filtrare, manipolare i dati, ecc. Inoltre, lo Stream permette di astrarre dal concetto di sorgente dei dati, che in questo modo possono arrivare da qualsiasi posto: memoria, disco, rete, ecc.<br>In alcuni casi, può anche aiutarci ad ottimizzare, riutilizzando la stessa porzione di memoria.<br>Se dovessimo infatti gestire la lettura di un file con una dimensione di X Giga, potrebbe risultare assai dispendiosa la lettura di tutto il file, perchè questo vorrebbe dire allocare tanta memoria.<br>Con lo Stream e in particolare con il BufferInputStream, noi possiamo allocare lo spazio in memoria solo per un determinato quantitativo di memoria, leggere fino a li, ed estrapolare solo i dati che ci servono, scartando il resto, a quel punto potremmo riutilizzare la stessa memoria e continuare a scorrere il file."
-        },
-        {
-            "type": "code",
-            "content": "esempioconInputStreamOb.js",
-            "class": "my-code"
         },
         {
             "type": "heading",
@@ -120,6 +118,10 @@
             "type": "code",
             "content": "esempio2.java",
             "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Detto questo, spero che il mio articolo possa essere d'aiuto a chi, come me, si sta approcciando a quest'argomento.<br> Come sempre, ricordo che questo blog è volto all'apprendimento, quindi, se avete consigli, precisazioni da fare, correzioni, sono felice di ascoltare. "
         }
     ]
 }

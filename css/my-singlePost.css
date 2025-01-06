@@ -1,42 +1,8 @@
-.my-content{
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    margin: 0 45px 0 45px;
+.single-post-image {
+    text-align: center;
 }
 
-
-.text-mutedTwo{
-    margin-left: 47px;
+.single-post-image>img {
+    max-height: 400px;
+    height: fit-content;
 }
-
-
-
-.card-title{
-    margin: 45px 0 0 45px;
-}
-
-.myrow{
-    --bs-gutter-x: -0.5rem;
-    
-     
-}
-
-.postImage {
-    max-width: 100%;
-}
-
-
-
-.my-h2{
-    margin-top: 50px;
-    color: black;
-}
-
-
-.myh3 {
-    margin: 3.5rem;
-}
-
-
-
-
