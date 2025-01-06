@@ -1,6 +1,6 @@
 {
-    "id": "my-third-post",
-    "image": "foto.jpg",
+    "id": "my-fifth-post",
+    "image": "foto.png",
     "title": "Gli Stream in Java",
     "info": {
         "date": "06 Gennaio 2025",
@@ -9,7 +9,7 @@
     "content": [
         {
             "type": "text",
-            "content": "Qual è il miglior modo di iniziare l'anno se non quello di introdurvi nel mondo degli Stream in Java?<br>Dunque: cosa è uno Stream?<br>Tra le varie definizioni trovate online si evince: \"uno *Stream* è un flusso di dati introdotto con Java 8 che può essere elaborato in modo funzionale, fornendo una rappresentazione astratta per l'elaborazione di una sequenza di dati, come ad esempio collezioni, array o altre sorgenti. Lo Stream non è una struttura dati in sé, ma una vista sulla sequenza di dati sorgente. Permette di applicare operazioni dichiarative per trasformare, filtrare, ordinare e raccogliere i dati\""
+            "content": "Qual è il miglior modo di iniziare l'anno se non quello di introdurvi nel mondo degli Stream in Java?<br>Dunque: cosa è uno Stream?<br>Tra le varie definizioni trovate online si evince: \"uno <strong>Stream</strong> è un flusso di dati introdotto con Java 8 che può essere elaborato in modo funzionale, fornendo una rappresentazione astratta per l'elaborazione di una sequenza di dati, come ad esempio collezioni, array o altre sorgenti. Lo Stream non è una struttura dati in sé, ma una vista sulla sequenza di dati sorgente. Permette di applicare operazioni dichiarative per trasformare, filtrare, ordinare e raccogliere i dati\""
         },
         {
             "type": "heading",
