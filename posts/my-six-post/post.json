@@ -1,0 +1,107 @@
+{
+    "id": "my-six-post",
+    "image": {
+        "src": "fotoo.png",
+        "containerBackgroundColor": "#cdc8bc"
+    },
+    "title": "Implementare un Garbage Collector: Come farebbe un programmatore?",
+    "info": {
+        "date": "09 Gennaio 2025",
+        "author": "Antonietta Brenga"
+    },
+    "content": [
+        {
+            "type": "text",
+            "content": "Molto spesso, quando ci addentriamo in argomenti legati al mondo tech, ci imbattiamo in implementazioni sviluppate da altri per risolvere problemi complessi.<br>Trovo straordinario come l’ingegno e le necessità di alcuni professionisti, veri e propri pionieri, abbiano portato alla creazione di strumenti che semplificano il lavoro, non solo per loro stessi, ma anche per tutti gli altri sviluppatori.<br>Leggendo un articolo sul <strong>Garbage Collector</strong> (GC), mi sono chiesta:<br><i>\"Va bene, il GC sa come fare il suo lavoro. Gestisce la memoria, la ricompatta e riposiziona gli oggetti automaticamente. Ma se toccasse a me implementare un ipotetico Garbage Collector, da dove comincerei? Come funzionerebbe esattamente e quale sarebbe il suo comportamento?\"</i><br>Prima di rispondere a questa domanda, penso sia importante fare un recap preliminare su come funziona Java.<br>"
+        },
+        {
+            "type": "heading",
+            "content": "Java è un linguaggio indipendente dalla piattaforma: ma cosa vuol dire?",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Java attraversa diversi passaggi prima di poter essere eseguito. Viene dapprima compilato nel <strong>JDK</strong> (Java Development Kit), dove è presente il compilatore (<strong>javac</strong>) che si occupa di trasformare il nostro codice sorgente (quello con estensione <i>.java</i>, per intenderci) in linguaggio intermedio, noto anche come byte-code (con estensione <i>.class</i>).<br>A questo punto, il codice così compilato è pronto per l'esecuzione: viene passato al <strong>JRE</strong> (Java Runtime Environment), che contiene la <strong>JVM</strong> (Java Virtual Machine). Sarà proprio la <strong>JVM</strong> a occuparsi di eseguire il byte-code. Nella <strong>JRE</strong>, oltre alla JVM, troviamo anche altri componenti fondamentali:<br><ul><li><strong>Class Loader:</strong> si occupa di rintracciare i file <strong>.class</strong> e di caricare gli elementi necessari nel momento in cui servono per l'esecuzione.<br><li> <strong>Garbage Collector (GC):</strong> gestisce automaticamente la memoria, eliminando gli oggetti non più utilizzati per liberare spazio e migliorare le prestazioni.<br></ul>Ed ecco che mi sono messa a pensare... Beh, sicuramente il <strong>Garbage Collector</strong> entra in azione quando non ci sono più riferimenti a un determinato oggetto. In altre parole, quando nella memoria è presente un oggetto che non viene utilizzato in nessuna parte del programma, il GC si occuperà di eliminarlo.<br>"
+        },
+        {
+            "type": "heading",
+            "content": "Ma come funziona la memoria in Java?",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Per capire meglio quel che fa il GC, mi sembra doveroso spendere due parole anche su come funziona la memoria in Java... La memoria in Java è divisa in due aree principali: <ol><li>Stack<ul><li>Memorizza:<ul><li><strong>Variabili locali</strong>(quelle dichiarate nei metodi)</li><li><strong>Riferimenti</strong> agli oggetti istanziati nello heap.</li></li></ul></ul><br>Ogni volta che viene istanziato un oggetto, la variabile di riferimento ne conterrà l'indirizzo (che non è altro che un intero a 64 bit, il più delle volte).<br>Inoltre la memoria dello <stron>stack</strong> è limitata e gestita automaticamente, viene allocata quando il metodo viene chiamato e deallocata al termine dell'esecuzione del metodo.<li>Heap</li><ul><li>dedicata alla memorizzazione degli oggetti istanziati dinamicamente (con <strong>new</strong>, per intenderci).</li><br>La memoria <strong>heap</strong> al suo interno è ulteriormente divisa in:<ul><li><strong>Young Generation </strong>dove vengono allocati e invecchiati tutti i nuovi oggetti.Una prima fase di Garbage Collector, si occupa di fare una prima fase di pulizia<li><strong>Old Generation:</strong> per gli oggetti di lunga durata, che vengono promossi dalla Young Generation</li><li><strong>Permanent Generation</strong> Contiene informazioni sulle classi (metadati), come i nomi delle classi, i metodi ecc.</li></ul></ul></ol><br>"
+        },
+        {
+            "type": "heading",
+            "content": "Il mio esperimento",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Quindi il mio ipotetico Garbage Collector dovrà: <ol><li><strong>Individuare gli oggetti inutilizzati:<br></strong>tutti gli oggetti allocati nella memoria heap passano periodicamente sotto l'analisi del GC</li><li><strong>Rimuovere e deallocare:</strong><br>gli oggetti che non hanno più riferimenti vengono eliminati per liberare spazio</li></ol><br>Detto questo, facendo qualche ricerca ho scoperto che per implementare un Garbage Collector non esiste un solo metodo. Esistono, infatti, diverse strategie, molte delle quali risultano anche piuttosto intuitive.<br>Ho trovato il tema molto interessante e, di seguito, vi mostro uno dei metodi che ho analizzato e successivamente implementato:"
+        },
+        {
+            "type": "code",
+            "content": "GarbageCollector.java",
+            "class": "my-code"
+        },
+        {
+            "type": "heading",
+            "content": "Spiegazione del codice",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "<strong>Metodo allocateObjInMemory</strong><br>"
+        },
+        {
+            "type": "text",
+            "content": "Per il metodo allocateObjInMemory, creiamo l'istanza di ObjInMemory:<br>"
+        },
+        {
+            "type": "code",
+            "content": "ObjInMemory.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Tale classe verrà aggiunta alla mia lista (che simula la memoria heap).<br>Successivamente, chiamerò il metodo addReference, al quale verrà passato come parametro una Stringa (che rappresenta il nome dell'oggetto allocato nella memoria heap). Il metodo addReference si occuperà di verificare se quel nome è già presente nel set di riferimenti e, se non è presente, lo aggiungerà. In modo simile, il metodo <strong>removeReference</strong> rimuoverà un riferimento se necessario.<br>"
+        },
+        {
+            "type": "text",
+            "content": "<strong>Metodo mark()</strong><br>"
+        },
+        {
+            "type": "text",
+            "content": "Una volta predisposti gli oggetti e i riferimenti nelle rispettive memorie, devo marcare, ovvero rendere raggiungibili, gli oggetti. Questo processo consiste nel segnare gli oggetti che sono ancora \"attivi\" e quindi non dovrebbero essere raccolti dal Garbage Collector.<br>"
+        },
+        {
+            "type": "text",
+            "content": "<strong>Il Metodo sweep() e la Rimozione degli Oggetti Non Raggiungibili</strong><br>",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Con il metodo sweep(), andrò poi a eliminare quegli oggetti che non risultano più raggiungibili. Questo è il passo finale del processo di Garbage Collection: rimuovere dalla memoria gli oggetti che non sono più utilizzati dal programma.<br>"
+        },
+        {
+            "type": "text",
+            "content": "<strong>Il Metodo run()</strong><br>",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Infine, dovrò implementare un metodo chiamato run(). Questo metodo sarà il punto di ingresso che eseguirà il ciclo completo:<br><ol><li>Eseguirà la <strong>raccolta</strong> degli oggetti (l'allocazione e deallocazione).</li><li>Eseguirà il <strong>marcaggio</strong> degli oggetti come raggiungibili..</li><li>Procederà con la <strong>rimozione</strong> degli oggetti non raggiungibili attraverso il metodo sweep()</li></ol><br>Nel Main avremo quindi:"
+        },
+        {
+            "type": "code",
+            "content": "Main.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Ed ecco un'implementazione ipotetica di un Garbage Collector, sicuramente molto semplificata.<br>Detto questo, spero che l'articolo vi sia piaciuto e, come sempre, che possa essere utile a qualcuno così come scriverlo ha aiutato me a comprendere meglio l'argomento e la sua implementazione.<br>Ribadisco che lo scopo di questo blog è l'apprendimento: sono sempre aperta al dialogo e, soprattutto, a eventuali suggerimenti o consigli per migliorare."
+        }
+    ]
+}
