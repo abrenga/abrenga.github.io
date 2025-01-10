@@ -1,10 +1,12 @@
 public class ObjInMemory {
     private String name;
     private boolean isReachable;
+    private Object object;
 
-    public ObjInMemory(String name) {
-        this.name = name; //rappresenta il nome dell'oggetto di riferimento da allocare poi in memoria
-        this.isReachable = false;// è raggiungibile? fissiamo di default a falso.
+    public ObjInMemory(Object object, String name) {
+        this.name = name;
+        this.isReachable = false;
+        this.object = object;
     }
 
     public boolean isReachable() {
@@ -19,8 +21,15 @@ public class ObjInMemory {
         return name;
     }
 
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 }
-// questa classe rappresenta il mio oggetto, che andrà poi allocato in memoria, avrà infatti un nome con il quale verrà identificato.
