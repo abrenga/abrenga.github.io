@@ -10,7 +10,7 @@ public class GarbageCollector {
     }
 
     public void addReference(String name) {
-        for (ObjInMemory obj : variableRoot) {
+        for (ObjInMemory obj : memory) {
             if (obj.getName().equals(name)) {
                 variableRoot.add(obj);
             }
