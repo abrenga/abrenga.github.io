@@ -304,7 +304,9 @@ var blog = {
     },
 
     getPostIdParameter: function () {
-        let postId = window.location.search.substr(4);
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let postId = urlParams.get('id');
         return postId;
     },
 
