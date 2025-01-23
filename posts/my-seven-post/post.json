@@ -43,11 +43,6 @@
         },
         {
             "type": "code",
-            "content": "",
-            "class": "my-code"
-        },
-        {
-            "type": "code",
             "content": "ExampleMain.java",
             "class": "my-code"
         },
