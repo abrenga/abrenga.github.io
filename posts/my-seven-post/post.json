@@ -1,0 +1,121 @@
+{
+    "id": "my-seven-post",
+    "image": "background-min.jpg",
+    "title": "Implementiamo un Thread Pool",
+    "info": {
+        "date": "22 Gennaio 2025",
+        "author": "Antonietta Brenga"
+    },
+    "content": [
+        {
+            "type": "text",
+            "content": "Sulla stessa onda dell’articolo precedente, vorrei analizzare con voi una possibile implementazione di un thread pool.<br>Prima di partire, voglio ricordare che i miei articoli hanno come obiettivo principale l’apprendimento: in primo luogo il mio e poi quello di chi, come me, è curioso di imparare.<br>Prima di parlare di come implementare un thread pool, penso sia importante fare un piccolo ripasso su alcuni concetti: cos’è un processo? Cosa sono i thread? Come lavorano tra loro e come la memoria gestisce la loro esecuzione?<br>Un processo, in sostanza, non è altro che un programma in esecuzione. Per far sì che questo programma venga eseguito, il sistema operativo assegna dello spazio in memoria e uno o più thread.<br>",
+            "class": "my-class"
+        },
+        {
+            "type": "heading",
+            "content": "Ma cosa sono i thread?",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Sono semplicemente dei flussi di esecuzione che lavorano all’interno del processo. Possiamo quindi dire che un thread è l’unità di base per l’elaborazione dei nostri programmi.<br>A questo punto, possiamo intuire che i thread appartenenti a un processo condividono lo stesso spazio in memoria, così come condividono variabili, file e altre risorse.<br>"
+        },
+        {
+            "type": "heading",
+            "content": "Ma nello specifico come funziona un thread?",
+            "class": "my-h5"
+        },
+        {
+            "type": "text",
+            "content": "Un thread ha un ID univoco assegnato dal sistema operativo ed è necessario per identificarlo tra tutti gli altri thread in esecuzione. Inoltre, ogni thread ha un piccolo spazio di memoria riservato chiamato stack, dove vengono salvate informazioni sulle variabili locali dei metodi che il thread chiama e sulle chiamate ai metodi stessi.<br>Ogni thread ha anche un Program Counter, che tiene traccia dell’istruzione successiva da eseguire ed ha uno stato interno, chiamato contesto, che ne definisce il ciclo di vita.<br>",
+            "class": "my-class"
+        },
+        {
+            "type": "heading",
+            "content": "Il ciclo di vita di un thread in Java",
+            "class": "my-h2"
+        },
+        {
+            "type": "text",
+            "content": "Un thread, essendo un flusso di esecuzione, ha un inizio, un periodo di attività e una fine. Di conseguenza, ha un ciclo di vita ben definito:<br><ul><li><strong>NEW:</strong> appena creato (ad esempio con new Thread()), il thread è nello stato di NEW. È come un’idea: esiste, ma non ha ancora iniziato a lavorare.</li><li><strong>RUNNABLE:</strong> quando viene chiamato il metodo start(), il thread diventa pronto per essere eseguito. È importante notare che in questa fase il thread è \"pronto\", ma potrebbe non iniziare subito l’esecuzione, in attesa che il sistema operativo gli assegni tempo CPU.</li><li><strong>RUNNING:</strong> il thread entra nello stato di RUNNING quando il sistema operativo gli assegna tempo di esecuzione. Qui inizia a svolgere il lavoro definito nel metodo run().</li><li></li><li><strong>TERMINATED:</strong> quando il metodo run() termina, il thread entra nello stato di TERMINATED e non può essere riavviato.</li><li><strong>WAITING:</strong> il thread è in attesa indefinita di un evento.</li><li><strong>TIMED_WAITING:</strong> il thread è in attesa di un evento per un tempo specifico.</li><li><strong>BLOCKED:</strong> il thread sta aspettando di accedere a una risorsa sincronizzata che è momentaneamente occupata.</li></ul><br>Ci viene spontaneo pensare che, se tutti i thread partecipanti ad un processo lavorano sullo stesso spazio in memoria e dunque hanno accesso  alle stesse risorse, possono verificarsi problemi di concorrenza. Ad esempio, supponiamo di avere:",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "",
+            "class": "my-code"
+        },
+        {
+            "type": "code",
+            "content": "ExampleMain.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Se eseguiamo più istanze di questa classe contemporaneamente, i thread potrebbero sovrascrivere il valore di contatore in modo imprevedibile, portando a risultati inaspettati.<br>Per evitare questi problemi, possiamo sincronizzare i thread. La sincronizzazione garantisce che un thread possa accedere a una risorsa condivisa (come il contatore) solo quando nessun altro thread la sta utilizzando. Questo meccanismo blocca temporaneamente gli altri thread, consentendo l’accesso sicuro alla risorsa da parte del thread corrente. Quando l’operazione è completata, gli altri thread possono riprendere la loro esecuzione.<br>Quando una classe accede a risorse sincronizzate, si dice che è thread-safe.<br>"
+        },
+        {
+            "type": "heading",
+            "content": "Dopo questa precisazione, veniamo a noi. Che cos'è un Thread Pool?",
+            "class": "my-h5"
+        },
+        {
+            "type": "text",
+            "content": "Beh, pensiamo che creare e distruggere thread continuamente è un’operazione costosa in termini di risorse. Ed è qui che entra in gioco il concetto di thread pool (che letteralmente significa \"piscina di thread\"). Lo immagino come una sorta di contenitore dove risiedono thread già pronti, in attesa di essere utilizzati.<br>",
+            "class": "my-class"
+        },
+        {
+            "type": "heading",
+            "content": "Come implementare un Thread Pool?",
+            "class": "my-h5"
+        },
+        {
+            "type": "text",
+            "content": "Per implementare un thread pool è necessario creare:<ul><li>una coda di task (di solito implementata con una struttura dati thread-safe come BlockingQueue) dove inserire i lavori da eseguire</li><li>una serie di thread che prendono i task dalla coda e li eseguono</li><li>una classe per il ThreadPool che gestisca la creazione dei thread e la distribuzione dei task</li></ul>Ecco il mio piccolo esperimento:<br>",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "MySingleTask.java",
+            "class": "my-code"
+        },
+        {
+            "type": "code",
+            "content": "TaskQueue.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Come si evince dal codice, abbiamo simulato un task che è stato poi inserito nella nostra coda dei task, chiamata TaskQueue.<br><strong>N.B:</strong> in questo esperimento ho utilizzato ArrayBlockingQueue invece di LinkedBlockingQueue, che di solito si preferisce utilizzare. La scelta è legata alla natura ridotta e contenuta del mio esempio. Tuttavia, in applicazioni più complesse o dove il numero di task non è conosciuto a priori, si consiglia l’uso di LinkedBlockingQueue, che è più flessibile e adatta a scenari con carichi di lavoro variabili.<br>Ho poi implementato una classe MyThread, che estende la classe Thread (in questo caso, MyThread rappresenta un singolo thread). All’interno del metodo run() ho definito il comportamento del thread, che consiste nel prendere un task dalla coda ed eseguirlo.<br>",
+            "class": "my-class"
+        },
+        {
+            "type": "code",
+            "content": "MyThread.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Successivamente, ho implementato la classe ThreadPool. Nel costruttore ho predisposto la creazione del pool di thread. In questo modo, quando il thread pool viene istanziato, i thread sono già pronti per essere utilizzati e in attesa di eseguire i task che verranno aggiunti alla coda.<br>"
+        },
+        {
+            "type": "code",
+            "content": "MyThreadPool.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Infine, nel metodo main, ho simulato l’assegnazione di task al thread pool:<br>"
+        },
+        {
+            "type": "code",
+            "content": "Main.java",
+            "class": "my-code"
+        },
+        {
+            "type": "text",
+            "content": "Come si può vedere, ogni task viene associato ad un thread che rimarrà operativo fino a quando tutti i task nella coda non saranno stati completati. Questo approccio garantisce che le risorse siano gestite in modo efficiente, evitando la continua creazione e distruzione di thread.<br>Spero, come al solito, di essere stata sufficientemente chiara e, magari perchè no, di aver interessato anche chi di questi argomenti è completamente a digiuno.<br> Se vi va ho pubblicato su Github il codice per intero."
+        }
+    ]
+}
